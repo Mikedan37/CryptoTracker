@@ -11,7 +11,6 @@ import Charts
 import MessageUI
 
 struct ContentView: View {
-    
     @State private var selectedCoin: CryptoCoin? = CryptoCoin(name: "Bitcoin", ticker: "BTC", price: 32000.50)
     @AppStorage("watchlist") private var storedWatchlist: Data = Data()
     @State private var watchlist: [CryptoCoin] = []
@@ -935,32 +934,6 @@ struct ContentView: View {
             print("⚠️ No saved watchlist found.")
         }
     }
-}
-
-struct CryptoNews: Identifiable {
-    let id = UUID()
-    let title: String
-    let source: String
-    let publishedAt: Date
-    let ticker: String
-    let url: String // Add this line
-}
-
-struct NewsAPIResponse: Codable {
-    let status: String
-    let totalResults: Int
-    let articles: [Article]
-}
-
-struct Article: Codable {
-    let title: String
-    let source: Source
-    let publishedAt: String
-    let url: String // ✅ Add this line
-}
-
-struct Source: Codable {
-    let name: String
 }
 
 struct WebView: UIViewRepresentable {
